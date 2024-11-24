@@ -1,40 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lab 4 B</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab 4b - JSON and jQuery</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
-    <script>
+  <h1>Book Details</h1>
 
-        const bookData = {
-                            "Books":
-                            [
-                                {
-                                "title": "The Great Gatsby",
-                                "author": "F. Scott Fitzgerald",
-                                "publicationYear": 1925,
-                                "genres": ["Fiction", "Classics"]
-                                },
-                                {
-                                "title": "To Kill a Mockingbird",
-                                "author": "Harper Lee",
-                                "publicationYear": 1960,
-                                "genres": ["Fiction", "Coming-of-Age"]
-                                }
-                            ]
-                        }
+  <script>
+    $(document).ready(function() {
+      // JSON data from Question 1
+      const data = {
+        "Books": [
+          {
+            "title": "The Great Gatsby",
+            "author": "F. Scott Fitzgerald",
+            "publicationYear": 1925,
+            "genres": ["Fiction", "Classics"]
+          },
+          {
+            "title": "To Kill a Mockingbird",
+            "author": "Harper Lee",
+            "publicationYear": 1960,
+            "genres": ["Fiction", "Coming-of-Age"]
+          }
+        ]
+      };
 
-        console.log(bookData.Books[0].title);
-        console.log(bookData.Books[0].author);
+      // Extract required details
+      const title1 = data.Books[0].title;
+      const author2 = data.Books[1].author;
+      const genres = data.Books.map(book => book.genres.join(", ")).join("; ");
 
-        // Loop through the students and display the subjects
-        bookData.Books.forEach(book => {
-            console.log(book.genres);
-        });
+      // Display details in the browser console
+      console.log("Title of the first book:", title1);
+      console.log("Author of the second book:", author2);
+      console.log("Genres of all books:", genres);
 
-    </script>
+    });
+  </script>
 </body>
 </html>
